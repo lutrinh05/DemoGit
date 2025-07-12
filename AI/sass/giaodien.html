@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Trí Tuệ Nhân Tạo</title>
+    <!--link rel="stylesheet" href="./main.css"-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css ">
+   
+   <!--script src="./gg.css"></!--script-->
+        
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        .leaflet-container {
+            height: 800px;
+            width: 800px;
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        TÌM ĐƯỜNG ĐI MIN
+    </h1>
+    <div id="floating-panel">
+        <b>Từ : </b>
+        <select id="source"> <!-- Danh sách các điểm xuất phát (điểm A)-->
+            <option value="Cống Vị, vi">Cống Vị</option> // Value của các option là từ khóa để Google tìm kiếm địa điểm.
+            <option value="Điện Biên, vi">Điện Biên</option>
+            <option value="Giảng Võ, vi">Giảng Võ</option>
+            <option value="Kim Mã, vi">Kim Mã</option>
+            <option value="Liễu Giai, vi">Liễu Giai</option>
+            <option value="Ngọc Hà, vi">Ngọc Hà</option>
+            <option value="Ngọc Khánh, vi">Ngọc Khánh</option>
+            <option value="Nguyễn Trung Trực, vi">Nguyễn Trung Trực</option>
+            <option value="Phúc Xá, vi">Phúc Xá</option>
+            <option value="Quán Thành , vi">Quán Thành</option>
+            <option value="Thành Công, vi">Thành Công</option>
+            <option value="Trúc Bạch , vi">Trúc Bạch</option>
+            <option value="Vĩnh Phúc , vi">Vĩnh Phúc</option>
+
+        </select>
+        <br>
+        <b>Đến : </b> <!-- Danh sách các điểm đích cần đến (điểm B)-->
+        <select id="destination">
+            <option value="Cống Vị, vi">Cống Vị</option> // Value của các option là từ khóa để Google tìm kiếm địa điểm.
+            <option value="Điện Biên, vi">Điện Biên</option>
+            <option value="Giảng Võ, vi">Giảng Võ</option>
+            <option value="Kim Mã, vi">Kim Mã</option>
+            <option value="Liễu Giai, vi">Liễu Giai</option>
+            <option value="Ngọc Hà, vi">Ngọc Hà</option>
+            <option value="Ngọc Khánh, vi">Ngọc Khánh</option>
+            <option value="Nguyễn Trung Trực, vi">Nguyễn Trung Trực</option>
+            <option value="Phúc Xá, vi">Phúc Xá</option>
+            <option value="Quán Thành , vi">Quán Thành</option>
+            <option value="Thành Công, vi">Thành Công</option>
+            <option value="Trúc Bạch , vi">Trúc Bạch</option>
+            <option value="Vĩnh Phúc , vi">Vĩnh Phúc</option>
+        </select>
+        <script>
+            var locations = [
+                ["Cống Vị ", 21.03529, 105.80923],
+                ["Điện Biên", 21.035980508686396, 105.83949775559634],
+                ["Giảng Võ", 21.02732, 105.82036],
+                ["Kim Mã", 21.033348800391913, 105.82516341849775],
+                ["Liễu Giai", 21.039173549698038, 105.81965240486788],
+                ["Ngọc Hà", 21.041737009249754, 105.82632580989964],
+                ["Ngọc Khánh", 21.03061545590949, 105.80854585387551],
+                ["Nguyễn Trung Trực", 21.043659574959396, 105.84900267895686],
+                ["Phúc Xá", 21.04762466715064, 105.84940148815528],
+                ["Quán Thành", 21.042377867243957, 105.83777721942826],
+                ["Thành Công", 21.024070102480465, 105.81165622204513],
+                ["Trúc Bạch", 21.04715903680515, 105.84311846505177],
+                ["Vĩnh Phúc", 21.041536378624507, 105.81286649982081],
+            ];
+        </script>
+        <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+        <script src="./main.js"></script>
+        <div id='map'></div>
+        <script>
+        var map = L.map('map').setView([21.047, 105.806], 8);
+            mapLink =
+                '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+            L.tileLayer(
+                'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; ' + mapLink + ' Contributors',
+                maxZoom: 18,
+            }).addTo(map);
+            for (var i = 0; i < locations.length; i++) {
+                marker = new L.marker([locations[i][1], locations[i][2]])
+                    .bindPopup(locations[i][0])
+                    .addTo(map);
+            }
+            </script>
+        
+       
+</body>
+
+</html>

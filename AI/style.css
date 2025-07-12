@@ -1,0 +1,33 @@
+var baseLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?' 
+
+{
+
+attribution: "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> | GIS Simplified "
+
+}
+),
+var map = L.map('map', {
+    center: [22.735656, 79.892578],
+
+    zoom: 5,
+
+    zoonControl: false, 
+    layers: [baseLayer],
+});
+
+var control =  L.Routing.control({
+
+waypoints: [
+
+L.LatLng(12.972442, 77.588643),
+L.latLng(31.104605, 77.173424)
+],
+showAlternatives: true,
+
+altLineOptions: {
+    <p style="color: black" ,opacity:0.15 ,weight: 9></p>
+    <p style="color: white" ,opacity:0.8 ,weight: 6></p>
+    <p style="color: blue" ,opacity:0.5 ,weight: 2></p>
+
+}}
+).addTo(map);
